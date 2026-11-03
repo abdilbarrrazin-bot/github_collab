@@ -1,0 +1,203 @@
+/* ===== Budaya Indonesia: CSS manual, tanpa framework ===== */
+:root {
+  --hutan: #14301f;
+  --hutan-2: #1f4a31;
+  --nila: #232d5b;
+  --kunyit: #e0a526;
+  --bara: #d9501b;
+  --abu: #f2f3ee;
+  --abu-2: #e6e9e1;
+  --tinta: #1d2420;
+  --redam: #5b665f;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { margin: 0; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.75; color: var(--tinta); background: var(--abu); }
+img { max-width: 100%; display: block; }
+a { color: var(--nila); }
+a:hover { color: var(--bara); }
+h1, h2, h3, .merek { font-family: "Fraunces", Georgia, serif; font-weight: 700; letter-spacing: -.01em; line-height: 1.2; margin: 0; }
+ul, ol { list-style: none; margin: 0; padding: 0; }
+:focus-visible { outline: 3px solid var(--kunyit); outline-offset: 2px; }
+
+.container { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+.lewati { position: absolute; left: -999px; top: 0; background: #fff; padding: .5rem 1rem; z-index: 2000; }
+.lewati:focus { left: 0; }
+#progress { position: fixed; top: 0; left: 0; height: 4px; width: 0; background: var(--bara); z-index: 1100; }
+
+/* tombol */
+.btn { display: inline-block; padding: .55rem 1.2rem; border: 2px solid transparent; border-radius: .25rem; font: 700 1rem "Nunito Sans", sans-serif; text-decoration: none; cursor: pointer; line-height: 1.5; }
+.btn-besar { padding: .75rem 1.6rem; font-size: 1.1rem; }
+.btn-kunyit { background: var(--kunyit); color: #1d1500; }
+.btn-kunyit:hover { background: #f0b83a; color: #1d1500; }
+.btn-garis { border-color: #fff; color: #fff; }
+.btn-garis:hover { background: #fff; color: var(--hutan); }
+
+/* navbar */
+.navbar { position: sticky; top: 0; z-index: 1000; background: rgba(20, 48, 31, .96); backdrop-filter: blur(6px); }
+.nav-dalam { display: flex; align-items: center; justify-content: space-between; min-height: 4rem; gap: 1rem; }
+.merek { color: #fff; font-size: 1.4rem; text-decoration: none; }
+.merek:hover { color: var(--kunyit); }
+.menu { display: flex; align-items: center; gap: 1.5rem; }
+.menu ul { display: flex; gap: .5rem; align-items: center; }
+.menu a, .dd-tombol { color: #fff; opacity: .88; text-decoration: none; background: none; border: 0; font: inherit; cursor: pointer; padding: .5rem .75rem; display: block; }
+.menu a:hover, .dd-tombol:hover { opacity: 1; color: var(--kunyit); }
+.menu a.btn { opacity: 1; color: #1d1500; }
+.dd { position: relative; }
+.dd-tombol::after { content: ""; display: inline-block; margin-left: .4rem; border: 4px solid transparent; border-top-color: currentColor; vertical-align: -2px; }
+.dd-isi { display: none; position: absolute; top: 100%; left: 0; min-width: 12rem; background: #fff; border-radius: .25rem; box-shadow: 0 8px 20px rgba(0, 0, 0, .25); padding: .4rem 0; }
+.dd.buka .dd-isi { display: block; }
+.dd-isi a { color: var(--tinta); opacity: 1; padding: .4rem 1rem; }
+.dd-isi a:hover { background: var(--abu); color: var(--bara); }
+.tombol-menu { display: none; background: none; border: 1px solid rgba(255, 255, 255, .5); border-radius: .25rem; padding: .55rem .6rem; cursor: pointer; }
+.tombol-menu span { display: block; width: 1.4rem; height: 2px; background: #fff; margin: 4px 0; }
+
+@media (max-width: 62rem) {
+  .tombol-menu { display: block; }
+  .menu { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--hutan); padding: 1rem; }
+  .menu.buka { display: flex; }
+  .menu ul { flex-direction: column; align-items: stretch; }
+  .dd-isi { position: static; box-shadow: none; background: rgba(255, 255, 255, .08); }
+  .dd-isi a { color: #fff; }
+  .menu a.btn { text-align: center; margin-top: .75rem; }
+}
+
+.breadcrumb { display: flex; flex-wrap: wrap; font-size: .9rem; padding: 1rem 0; color: var(--redam); }
+.breadcrumb li + li::before { content: "/"; padding: 0 .5rem; color: #98a39b; }
+
+/* motif tenun */
+.tenun {
+  height: 14px;
+  background:
+    linear-gradient(135deg, var(--kunyit) 25%, transparent 25%) -7px 0/14px 14px,
+    linear-gradient(225deg, var(--kunyit) 25%, transparent 25%) -7px 0/14px 14px,
+    linear-gradient(315deg, var(--bara) 25%, transparent 25%) 0 0/14px 14px,
+    linear-gradient(45deg, var(--bara) 25%, var(--nila) 25%) 0 0/14px 14px;
+}
+
+/* hero */
+.hero { position: relative; display: flex; align-items: center; min-height: 72vh; color: #fff; overflow: hidden; padding: 4rem 0;
+  background: linear-gradient(180deg, rgba(20, 48, 31, .55) 0%, rgba(20, 48, 31, .82) 60%, rgba(60, 20, 8, .92) 100%), var(--foto, url("https://picsum.photos/id/1043/1600/900")) center/cover var(--hutan); }
+.hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 40%; background: radial-gradient(ellipse at 50% 120%, rgba(217, 80, 27, .65), transparent 70%); pointer-events: none; }
+.hero .container { position: relative; z-index: 1; }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); max-width: 16ch; text-wrap: balance; line-height: 1.08; }
+.hero .lead { font-size: 1.25rem; max-width: 46ch; color: #e8ece6; margin: 1.5rem 0; }
+.aksi { display: flex; flex-wrap: wrap; gap: .75rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero::after { animation: bara 5s ease-in-out infinite alternate; }
+  @keyframes bara { from { opacity: .55; } to { opacity: 1; } }
+}
+
+/* tata letak artikel */
+.tata-letak { display: grid; grid-template-columns: minmax(0, 40rem); justify-content: center; gap: 3rem; padding: 3rem 0; }
+.toc-wadah { display: none; }
+@media (min-width: 62rem) {
+  .tata-letak { grid-template-columns: 15rem minmax(0, 40rem); }
+  .toc-wadah { display: block; }
+}
+.toc { position: sticky; top: 6rem; display: flex; flex-direction: column; font-size: .95rem; border-left: 3px solid #cfd5cc; }
+.toc a { color: #4a564e; text-decoration: none; padding: .35rem .9rem; margin-left: -3px; border-left: 3px solid transparent; }
+.toc a.aktif { color: var(--hutan); font-weight: 700; border-left-color: var(--bara); }
+
+.artikel p { margin: 0 0 1.25rem; }
+.artikel > p:first-child::first-line { font-weight: 700; }
+.artikel h2 { font-size: 1.85rem; margin: 3rem 0 1rem; color: var(--hutan); }
+.artikel figure { margin: 2rem 0; }
+.artikel figure > img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: .25rem .25rem 1.5rem .25rem; }
+figcaption { font-size: .88rem; color: var(--redam); margin-top: .5rem; }
+
+/* slider sebelum/sesudah */
+.banding { position: relative; aspect-ratio: 3/2; overflow: hidden; background: var(--hutan); border-radius: .25rem .25rem 1.5rem .25rem; user-select: none; --pos: 50%; }
+.banding img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.banding .sesudah { filter: grayscale(1) sepia(.6) brightness(.45) contrast(1.15); }
+.banding .sebelum { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.banding input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.banding .garis { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; background: #fff; transform: translateX(-50%); pointer-events: none; }
+.banding .garis::after { content: "\2194"; position: absolute; top: 50%; left: 50%; width: 2.5rem; height: 2.5rem; display: grid; place-items: center; transform: translate(-50%, -50%); border-radius: 50%; background: var(--kunyit); color: #1d1500; font-weight: 700; box-shadow: 0 2px 8px rgba(0, 0, 0, .4); }
+.banding input:focus-visible + .garis::after { outline: 3px solid #fff; }
+.tag { position: absolute; bottom: .75rem; padding: .15rem .7rem; font-size: .85rem; font-weight: 700; color: #fff; background: rgba(0, 0, 0, .6); border-radius: 99px; pointer-events: none; }
+.tag-kiri { left: .75rem; }
+.tag-kanan { right: .75rem; }
+
+/* ritual */
+.grid-ritual { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.ritual { background: #fff; border-top: 5px solid var(--kunyit); border-radius: .25rem; padding: 1.25rem 1.25rem .25rem; }
+.ritual.nila { border-top-color: var(--nila); }
+.ritual h3 { font-size: 1.25rem; margin-bottom: .5rem; }
+
+.ajakan { background: var(--hutan); color: #fff; border-radius: 1.5rem .25rem 1.5rem .25rem; padding: 2rem; margin: 3rem 0; }
+.ajakan h3 { font-size: 1.5rem; }
+.ajakan p { color: #dfe6dd; margin: .5rem 0 1rem; }
+.ajakan a.btn { color: #1d1500; }
+
+.tautan-panduan { display: block; padding: 1rem 1.25rem; background: #fff; border-left: 5px solid var(--bara); border-radius: .25rem; font-weight: 700; text-decoration: none; }
+.tautan-panduan:hover { background: #fff7f2; }
+.catatan { background: #fff7e0; border-left: 5px solid var(--kunyit); padding: 1.25rem 1.5rem; border-radius: .25rem; }
+
+/* seksi */
+.seksi { padding: 3.5rem 0; }
+.seksi h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+.seksi-abu { background: var(--abu-2); }
+.grid { display: grid; gap: 1.5rem; }
+.grid-tur { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.grid-blog { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+
+.kartu { position: relative; background: #fff; border-radius: .25rem; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.kartu:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(20, 48, 31, .18); }
+.kartu img { width: 100%; aspect-ratio: 3/2; object-fit: cover; }
+.kartu-isi { padding: 1rem 1.25rem 1.25rem; }
+.kartu h3 { font-size: 1.15rem; margin-bottom: .5rem; color: var(--hutan); }
+.kartu h3 a { color: inherit; text-decoration: none; }
+.tautan-kartu::after { content: ""; position: absolute; inset: 0; } /* seluruh kartu bisa diklik */
+.kartu .tautan-kartu:not(h3 a) { color: var(--bara); font-weight: 700; }
+.durasi { display: inline-block; font-size: .85rem; font-weight: 700; padding: .1rem .7rem; border-radius: 99px; background: var(--nila); color: #fff; margin-bottom: .5rem; }
+.tgl { font-size: .9rem; color: var(--redam); }
+@media (prefers-reduced-motion: reduce) { .kartu { transition: none; } .kartu:hover { transform: none; } }
+
+/* form */
+.seksi-nila { background: var(--nila); color: #fff; }
+.form-wadah { max-width: 35rem; }
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-weight: 700; margin-bottom: .25rem; }
+.field input, .field textarea { width: 100%; padding: .7rem .9rem; font: inherit; border: 2px solid transparent; border-radius: .25rem; color: var(--tinta); }
+.bantu { font-size: .9rem; color: #c9cfe8; margin: .25rem 0 0; }
+.galat { display: none; font-size: .9rem; color: #ffb59a; margin: .25rem 0 0; }
+.field.tidak-valid input { border-color: #ff8a65; }
+.field.tidak-valid .galat { display: block; }
+.sukses { margin-top: 1rem; padding: .9rem 1.1rem; background: #d9f2e2; color: #0f3d22; border-radius: .25rem; }
+
+.footer { background: var(--hutan); color: #cdd6cb; text-align: center; padding: 1.5rem 1rem; font-size: .9rem; }
+.footer p { margin: 0 0 .25rem; }
+.footer a { color: #fff; margin: 0 .4rem; }
+
+.wa-float { position: fixed; right: 1rem; bottom: 1rem; z-index: 1030; background: #1fa855; color: #fff; font-weight: 700; padding: .65rem 1.2rem; border-radius: 99px; text-decoration: none; box-shadow: 0 4px 12px rgba(0, 0, 0, .3); }
+.wa-float:hover { background: #178a45; color: #fff; }
+
+/* ===== tambahan multi-halaman ===== */
+.hero-kecil { min-height: 50vh; }
+.menu a[aria-current="page"] { opacity: 1; color: var(--kunyit); font-weight: 700; }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.kartu-isi p { margin: 0 0 .75rem; font-size: .98rem; line-height: 1.6; }
+.ritual.bara { border-top-color: var(--bara); }
+.ritual.hutan { border-top-color: var(--hutan-2); }
+.artikel .daftar { list-style: disc; padding-left: 1.25rem; margin: 0 0 1.25rem; }
+.artikel .daftar li { margin-bottom: .6rem; padding-left: .25rem; }
+.darurat { background: #fde8e1; border-left-color: var(--bara); }
+.darurat p { margin: 0 0 .75rem; }
+.darurat p:last-child { margin: 0; }
+.rantai { display: flex; flex-wrap: wrap; align-items: stretch; gap: .5rem; margin: 1.5rem 0; }
+.rantai span { flex: 1 1 8rem; background: #fff; border-bottom: 4px solid var(--bara); padding: .75rem; font-weight: 700; font-size: .95rem; line-height: 1.4; }
+.rantai span + span::before { content: "\2192 "; color: var(--bara); }
+
+/* kuis */
+.kuis .soal { background: #fff; border-left: 5px solid var(--nila); border-radius: .25rem; padding: 1.25rem; margin-bottom: 1rem; }
+.kuis .pernyataan { font-weight: 700; margin: 0 0 .75rem; }
+.pilihan { display: flex; gap: .75rem; }
+.pilihan button { font: 700 1rem "Nunito Sans", sans-serif; padding: .5rem 1.4rem; border: 2px solid var(--nila); background: #fff; color: var(--nila); border-radius: .25rem; cursor: pointer; }
+.pilihan button:hover:not(:disabled) { background: var(--nila); color: #fff; }
+.pilihan button:disabled { cursor: default; opacity: .6; }
+.pilihan button.benar { background: #1f7a46; border-color: #1f7a46; color: #fff; opacity: 1; }
+.pilihan button.salah { background: #b3261e; border-color: #b3261e; color: #fff; opacity: 1; }
+.umpan { margin: .75rem 0 0 !important; font-size: .98rem; line-height: 1.6; }
+.skor { font-weight: 700; font-size: 1.1rem; }
